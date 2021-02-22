@@ -22,7 +22,9 @@ export const httpControllers = [
 |
 */
 
-export const collections = []
+export const collections = [
+  require('./Services/Collections/BlingCollection').BlingCollection,
+]
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +39,7 @@ export const middlewares = [
   {
     middleware: require('./Http/Middlewares/PaginationMiddleware')
       .PaginationMiddleware,
-    routes: [{ path: 'orders', method: RequestMethod.PATCH }],
+    routes: [{ path: 'orders', method: RequestMethod.GET }],
   },
 ]
 
