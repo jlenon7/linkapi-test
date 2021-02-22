@@ -20,6 +20,7 @@ export class BlingCollection {
   createOrder(
     data: CreateOrderDto,
   ): Observable<AxiosResponse<BlingOrderContract>> {
+    console.log('orderVo', data)
     const xml = `
     <?xml version="1.0" encoding="ISO-8859-1"?>
       <pedido>
@@ -46,7 +47,7 @@ export class BlingCollection {
     `
 
     return this.httpService.post(
-      `${this.url}/pedido/json?apiKey=${this.token}&xml=${xml}`,
+      `${this.url}/pedido/json/?apikey=${this.token}&xml=${xml}`,
     )
   }
 }
