@@ -9,7 +9,7 @@ export class WebhookController {
   @Post('/create')
   async create(@Body() body) {
     console.log('Webhook', body.current)
-    if (body.status.current !== 'won') {
+    if (body.current.status !== 'won') {
       return
     }
 
