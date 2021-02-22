@@ -18,11 +18,13 @@ export class OrderService {
   }
 
   async create(dto: CreateOrderDto) {
-    dto.token = new Token().generate('ord')
+    console.log(dto)
 
     const blingResponse = await this.blingCollection
       .createOrder(dto)
       .toPromise()
+
+    dto.token = new Token().generate('ord')
 
     console.log(blingResponse)
 

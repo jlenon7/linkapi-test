@@ -20,6 +20,8 @@ export class BlingCollection {
   createOrder(
     data: CreateOrderDto,
   ): Observable<AxiosResponse<BlingOrderContract>> {
+    console.log(this.url)
+    console.log(this.token)
     console.log('orderVo', data)
     const xml = `
     <?xml version="1.0" encoding="ISO-8859-1"?>
