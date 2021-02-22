@@ -9,8 +9,9 @@ import { RequestMethod } from '@nestjs/common'
 |
 */
 export const httpControllers = [
-  require('./Http/WebhookController').default,
-  require('./Http/WelcomeController').default,
+  require('./Http/OrderController').OrderController,
+  require('./Http/WebhookController').WebhookController,
+  require('./Http/WelcomeController').WelcomeController,
 ]
 
 /*
@@ -39,7 +40,7 @@ export const middlewares = [
   {
     middleware: require('./Http/Middlewares/PaginationMiddleware')
       .PaginationMiddleware,
-    routes: [{ path: 'orders', method: RequestMethod.GET }],
+    routes: [{ path: '/orders', method: RequestMethod.GET }],
   },
 ]
 
@@ -52,7 +53,9 @@ export const middlewares = [
 |
 */
 
-export const filters = [require('./Http/Filters/HttpExceptionFilter').default]
+export const filters = [
+  require('./Http/Filters/HttpExceptionFilter').HttpExceptionFilter,
+]
 
 /*
 |--------------------------------------------------------------------------
@@ -75,5 +78,5 @@ export const guards = []
 */
 
 export const interceptors = [
-  require('./Http/Interceptors/ResponseInterceptor').default,
+  require('./Http/Interceptors/ResponseInterceptor').ResponseInterceptor,
 ]

@@ -2,7 +2,7 @@ import { ConfigService } from '@nestjs/config'
 import { Controller, Get } from '@nestjs/common'
 
 @Controller()
-export default class WelcomeController {
+export class WelcomeController {
   constructor(private configService: ConfigService) {}
 
   @Get()

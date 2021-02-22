@@ -3,7 +3,7 @@ import { CreateOrderDto } from 'app/Contracts/Dtos/CreateOrderDto'
 import { OrderService } from 'app/Services/Api/OrderService'
 
 @Controller('/webhooks')
-export default class WebhookController {
+export class WebhookController {
   @Inject(OrderService) private orderService: OrderService
 
   @Post('/create')

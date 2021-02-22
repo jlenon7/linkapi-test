@@ -1,1 +1,1 @@
-export default [require('./OrderRepository')]
+export default [require('./OrderRepository').OrderRepository]

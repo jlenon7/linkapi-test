@@ -3,7 +3,7 @@ import { Pagination } from 'app/Decorators/Pagination'
 import { PaginationContract } from '@secjs/core/build/Contracts/PaginationContract'
 
 @Controller('/orders')
-export default class OrderController {
+export class OrderController {
   @Get()
   async list(@Pagination() pagination: PaginationContract) {
     console.log(pagination)

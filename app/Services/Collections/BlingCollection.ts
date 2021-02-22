@@ -11,9 +11,8 @@ export class BlingCollection {
   private token: string
 
   @Inject(HttpService) private httpService: HttpService
-  @Inject(ConfigService) private configService: ConfigService
 
-  constructor() {
+  constructor(private configService: ConfigService) {
     this.url = this.configService.get('http.bling.services.url')
     this.token = this.configService.get('http.bling.services.token')
   }

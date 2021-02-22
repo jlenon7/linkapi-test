@@ -1,6 +1,8 @@
 import Env from '@secjs/env'
 
-const schemasPath = []
+import { Order, OrderSchema } from 'app/Schemas/Order'
+
+const schemasPath = [{ name: Order.name, schema: OrderSchema }]
 
 const configurations = {
   /*
