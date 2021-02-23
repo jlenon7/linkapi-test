@@ -1,6 +1,34 @@
-# LinkAPI Test
+# LinkAPI Test 🧠
 
-Project developed in test for LinkApi
+> Project developed in test for LinkApi
+
+[![GitHub followers](https://img.shields.io/github/followers/jlenon7.svg?style=social&label=Follow&maxAge=2592000)](https://github.com/jlenon7?tab=followers)
+[![GitHub stars](https://img.shields.io/github/stars/jlenon7/linkapi-test.svg?style=social&label=Star&maxAge=2592000)](https://github.com/jlenon7/linkapi-test/stargazers/)
+
+<p>
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/jlenon7/linkapi-test?style=for-the-badge&logo=appveyor">
+
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/jlenon7/linkapi-test?style=for-the-badge&logo=appveyor">
+
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen?style=for-the-badge&logo=appveyor">
+</p>
+
+It is necessary to provide an `API` that integrates the `Pipedrive` and `Bling` services, in order to be able to place sales orders for suppliers within `Bling`
+
+<img src="https://extrato.vtex.com/images/linkapi_avatar-linkapiX800.png" width="200px" align="right" hspace="30px" vspace="100px">
+
+## OBSERVAÇÃO
+
+Essa API está rodando dentro de um servidor no Heroku apenas para ver o funcionamento do Webhook. [Clique aqui para acessar!](https://linkapi-test.herokuapp.com/api)
+
+Não esqueça de criar o arquivo com as váriaveis de ambiente para rodar os testes ou modo development.
+
+## COMANDOS
+
+```bash
+cp .env.example .env.testing && yarn test
+cp .env.example .env && yarn start:dev
+```
 
 ## OBJETIVO
 
@@ -18,7 +46,7 @@ Project developed in test for LinkApi
 
 - [x] Desenvolva e versione o projeto usando git
 - [x] Utilize o GitHub para hospedar o código
-- [ ] Enviar o link do repositório para people@linkapi.com.br
+- [x] Enviar o link do repositório para people@linkapi.com.br
 
 ## O QUE SERÁ AVALIADO
 
@@ -32,6 +60,7 @@ Project developed in test for LinkApi
 
 - [ ] Enfileirar as requisições das collections com RabbitMQ
 - [x] Adicionar Rate limiter
+- [x] Implementar Webhook para quando um Deal for atualizado no Pipedrive ajustar no Bling
 - [x] Criar testes para a collection do Bling
 - [x] Criar testes para os endpoints de Orders
 - [x] Criar testes para a collection do Pipedrive
