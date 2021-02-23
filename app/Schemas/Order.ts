@@ -5,7 +5,7 @@ export type OrderDocument = Order & mongoose.Document
 
 @Schema({ timestamps: true })
 export class Order {
-  @Prop({ type: String, required: true })
+  @Prop({ type: String, required: true, unique: true })
   code: string
 
   @Prop({ type: Date, required: true, index: true })
@@ -36,7 +36,7 @@ export class Order {
   @Prop({ type: String, required: true })
   description: string
 
-  @Prop({ type: String, required: true, index: true })
+  @Prop({ type: String, required: true, index: true, unique: true })
   token: string
 
   @Prop({ type: Date, default: null })
