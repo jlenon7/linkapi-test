@@ -19,13 +19,9 @@ export class OrderController {
 
   @Get()
   async list(
+    @Query() queries?: string[],
     @Pagination() pagination: PaginationContract,
-    @Query('dates') dates?: any,
-    @Query('prices') prices?: any,
   ) {
-    if (dates) dates = dates.split('TO')
-    if (prices) prices = prices.split('TO')
-
     return this.orderService.list(pagination, dates, prices)
   }
 
