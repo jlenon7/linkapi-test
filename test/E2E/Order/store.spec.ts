@@ -11,7 +11,7 @@ describe('\n[E2E] Store Order 🏘', () => {
     const status = 201
     const method = 'POST'
     const code = 'RESPONSE'
-    const path = '/orders'
+    const path = '/v1/orders'
 
     const order = {
       code: new Token().generate(),

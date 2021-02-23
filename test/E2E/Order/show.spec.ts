@@ -17,7 +17,7 @@ describe('\n[E2E] Show Order 🏘', () => {
     const status = 200
     const method = 'GET'
     const code = 'RESPONSE'
-    const path = `/orders/${order._id}`
+    const path = `/v1/orders/${order._id}`
 
     const { body } = await request(app.server.getHttpServer())
       .get(path)
@@ -34,7 +34,7 @@ describe('\n[E2E] Show Order 🏘', () => {
     const status = 500
     const method = 'GET'
     const code = 'Error'
-    const path = '/orders/null-id'
+    const path = '/v1/orders/null-id'
 
     const { body } = await request(app.server.getHttpServer())
       .get(path)
@@ -54,7 +54,7 @@ describe('\n[E2E] Show Order 🏘', () => {
     const status = 404
     const method = 'GET'
     const code = 'Error'
-    const path = '/orders/601d80cf50ee4620e3373371'
+    const path = '/v1/orders/601d80cf50ee4620e3373371'
 
     const { body } = await request(app.server.getHttpServer())
       .get(path)

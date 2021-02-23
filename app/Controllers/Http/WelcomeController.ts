@@ -1,7 +1,9 @@
+import { ApiTags } from '@nestjs/swagger'
 import { ConfigService } from '@nestjs/config'
 import { Controller, Get } from '@nestjs/common'
 
 @Controller()
+@ApiTags('Welcome')
 export class WelcomeController {
   constructor(private configService: ConfigService) {}
 

@@ -41,7 +41,7 @@ export const middlewares = [
   {
     middleware: require('./Http/Middlewares/PaginationMiddleware')
       .PaginationMiddleware,
-    routes: [{ path: '/orders', method: RequestMethod.GET }],
+    routes: [{ path: '/v1/orders', method: RequestMethod.GET }],
   },
 ]
 

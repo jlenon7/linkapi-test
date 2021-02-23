@@ -17,6 +17,20 @@ It is necessary to provide an `API` that integrates the `Pipedrive` and `Bling` 
 
 <img src="https://extrato.vtex.com/images/linkapi_avatar-linkapiX800.png" width="200px" align="right" hspace="30px" vspace="100px">
 
+## ENDPOINTS
+
+| METHOD    | URI                   | NAME              |
+| --------- | --------------------- | ----------------- |
+| GET       | api/v1/orders         | orders.index      |
+| POST      | api/v1/orders         | orders.store      |
+| GET       | api/v1/orders/:id     | orders.show       |
+
+Query Search em orders.index
+
+Listagem paginadas: `?offset=0&limit=10`
+Listagem entre preços: `?since_price=2000.00&max_price=4000.00`
+Listagem entre datas: `?since_date=2021-02-23T05:00:00.000Z&max_date=2021-02-24T06:00:00.000Z`
+
 ## OBSERVAÇÃO
 
 Essa API está rodando dentro de um servidor no Heroku apenas para ver o funcionamento do Webhook. [Clique aqui para acessar!](https://linkapi-test.herokuapp.com/api)

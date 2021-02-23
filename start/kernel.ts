@@ -1,6 +1,7 @@
 import app from 'config/app'
 import http from 'config/http'
 import cors from 'config/cors'
+import swagger from 'config/swagger'
 import database from 'config/database'
 import ratelimit from 'config/ratelimit'
 
@@ -12,6 +13,7 @@ const configuration = () => ({
   app,
   http,
   cors,
+  swagger,
   database,
   ratelimit,
 })

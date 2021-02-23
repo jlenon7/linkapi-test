@@ -38,6 +38,7 @@ const configurations = {
       options: {
         useCreateIndex: true,
         useNewUrlParser: true,
+        useFindAndModify: false,
         useUnifiedTopology: true,
       },
     },

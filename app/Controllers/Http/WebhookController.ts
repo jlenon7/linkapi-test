@@ -1,14 +1,16 @@
-import { Body, Controller, Inject, Post } from '@nestjs/common'
-import { Token } from '@secjs/core/build/Utils/Classes/Token'
-import { CreateOrderDto } from 'app/Contracts/Dtos/CreateOrderDto'
+import { ApiTags } from '@nestjs/swagger'
 import { OrderService } from 'app/Services/Api/OrderService'
+import { Token } from '@secjs/core/build/Utils/Classes/Token'
+import { Body, Controller, Inject, Post } from '@nestjs/common'
+import { CreateOrderDto } from 'app/Contracts/Dtos/CreateOrderDto'
 
-@Controller('/webhooks')
+@ApiTags('Webhooks')
+@Controller('/v1/webhooks')
 export class WebhookController {
   @Inject(OrderService) private orderService: OrderService
 
   @Post('/create')
-  async create(@Body() body) {
+  async store(@Body() body) {
     const data = body.current
 
     if (data.status !== 'won') {

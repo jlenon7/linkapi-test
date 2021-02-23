@@ -27,6 +27,7 @@
     "@nestjs/core": "^7.0.0",
     "@nestjs/mongoose": "^7.2.2",
     "@nestjs/platform-express": "^7.0.0",
+    "@nestjs/swagger": "^4.7.13",
     "@secjs/core": "^1.4.2",
     "@secjs/env": "^1.0.1",
     "axios": "^0.21.0",
@@ -37,10 +38,11 @@
     "dotenv": "^8.2.0",
     "express-rate-limit": "^5.2.6",
     "helmet": "^4.4.1",
-    "mongoose": "^5.11.15",
+    "mongoose": "5.11.15",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.5.4",
+    "swagger-ui-express": "^4.1.6",
     "uuidv4": "^6.2.5"
   },
   "devDependencies": {
@@ -66,7 +68,6 @@
     "eslint-plugin-standard": "^4.0.0",
     "jest": "26.0.1",
     "luxon": "^1.25.0",
-    "mongodb-memory-server": "^6.9.3",
     "prettier": "^1.19.1",
     "supertest": "^4.0.2",
     "ts-jest": "26.1.0",
