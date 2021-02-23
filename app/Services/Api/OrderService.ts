@@ -1,10 +1,9 @@
-import { endOfDay, startOfDay } from 'date-fns'
-
-import { Token } from '@secjs/core/build/Utils/Classes/Token'
 import {
   ApiRequestContract,
   PaginationContract,
 } from '@secjs/core/build/Contracts'
+import { endOfDay, startOfDay } from 'date-fns'
+import { Token } from '@secjs/core/build/Utils/Classes/Token'
 import { BlingCollection } from '../Collections/BlingCollection'
 import { CreateOrderDto } from 'app/Contracts/Dtos/CreateOrderDto'
 import { OrderRepository } from 'app/Repositories/OrderRepository'
@@ -25,12 +24,11 @@ export class OrderService {
   async createMany() {
     const deals = await this.pipedriveCollection.getDeals('won')
 
-    const promises = []
-
     deals.forEach(deal => {
       const orderVo = new CreateOrderDto()
 
       orderVo.client = {}
+      orderVo.pipedriveId = deal.id
       orderVo.date = deal.update_time
       orderVo.seller = deal.owner_name
       orderVo.description = deal.title
@@ -41,38 +39,36 @@ export class OrderService {
       orderVo.discount = orderVo.quantity / 2
       orderVo.client.email = deal.person_id.email[0].value
 
-      promises.push(this.createOne(orderVo))
+      this.createOne(orderVo)
     })
-
-    await Promise.all(promises)
 
     return {
       numberOfDeals: deals.length,
-      message: 'All orders created successfully!',
+      message: 'Orders being created on Bling, please wait and list the Orders',
     }
   }
 
-  async list(pagination: PaginationContract, dates?: any[], prices?: any[]) {
+  async list(pagination: PaginationContract, queries) {
     const data: ApiRequestContract = {}
 
     data.where = []
 
-    if (dates) {
+    if (queries.sinceDate && queries.maxDate) {
       data.where.push({
         key: 'date',
         value: {
-          $gte: startOfDay(new Date(dates[1].replace(' ', ''))),
-          $lt: endOfDay(new Date(dates[0].replace(' ', ''))),
+          $gte: startOfDay(new Date(queries.sinceDate)),
+          $lt: endOfDay(new Date(queries.maxDate)),
         },
       })
     }
 
-    if (prices) {
+    if (queries.maxPrice && queries.sincePrice) {
       data.where.push({
         key: 'price',
         value: {
-          $gte: prices[1].replace(' ', ''),
-          $lt: prices[0].replace(' ', ''),
+          $gte: queries.sincePrice,
+          $lt: queries.maxPrice,
         },
       })
     }
@@ -80,10 +76,19 @@ export class OrderService {
     return this.orderRepository.getAll(pagination, data)
   }
 
-  async createOne(dto: CreateOrderDto) {
-    await this.blingCollection.createOrder(dto)
+  async createOne(dto: CreateOrderDto): Promise<any> {
+    const alreadyCreated = await this.orderRepository.getOne(null, {
+      where: [{ key: 'pipedriveId', value: dto.pipedriveId }],
+    })
+
+    if (alreadyCreated) {
+      return
+    }
+
+    const blingOrder = await this.blingCollection.createOrder(dto)
 
     dto.token = new Token().generate('ord')
+    dto.blingId = blingOrder.idPedido
 
     return this.orderRepository.storeOne(dto)
   }

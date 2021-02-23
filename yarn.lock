@@ -636,10 +636,10 @@
     "@angular-devkit/core" "10.0.7"
     "@angular-devkit/schematics" "10.0.7"
 
-"@secjs/core@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@secjs/core/-/core-1.4.1.tgz#aeb8186a425c7460e37e0adfd8d9ea46d39bb783"
-  integrity sha512-D8UUdK2DFqfBa829IiG0LksY6qLaWdfXrONmYWYe0GxauSjAy9B/YIytyl5C+vmYk7MgmJFrLiwTPEYds5LeKA==
+"@secjs/core@^1.4.2":
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/@secjs/core/-/core-1.4.2.tgz#00ad43175bcb25467c571279720e8ed10cfd2945"
+  integrity sha512-sYv0OcAks7QUhMzfCPOUj9haJBPCCvAyDVzSr8g9XP6Qg7aqfGhQ0TTGqeZ7z9Ts7jQU+738NfbiD9s1TKSKiw==
 
 "@secjs/env@^1.0.1":
   version "1.0.1"
@@ -3099,6 +3099,11 @@ expect@^26.6.1:
     jest-message-util "^26.6.1"
     jest-regex-util "^26.0.0"
 
+express-rate-limit@^5.2.6:
+  version "5.2.6"
+  resolved "https://registry.yarnpkg.com/express-rate-limit/-/express-rate-limit-5.2.6.tgz#b454e1be8a252081bda58460e0a25bf43ee0f7b0"
+  integrity sha512-nE96xaxGfxiS5jP3tD3kIW1Jg9yQgX0rXCs3rCkZtmbWHEGyotwaezkLj7bnB41Z0uaOLM8W4AX6qHao4IZ2YA==
+
 express@4.17.1:
   version "4.17.1"
   resolved "https://registry.yarnpkg.com/express/-/express-4.17.1.tgz#4491fc38605cf51f8629d39c2b5d026f98a4c134"
@@ -3692,6 +3697,11 @@ hash.js@^1.0.0, hash.js@^1.0.3:
   dependencies:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.1"
+
+helmet@^4.4.1:
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/helmet/-/helmet-4.4.1.tgz#a17e1444d81d7a83ddc6e6f9bc6e2055b994efe7"
+  integrity sha512-G8tp0wUMI7i8wkMk2xLcEvESg5PiCitFMYgGRc/PwULB0RVhTP5GFdxOwvJwp9XVha8CuS8mnhmE8I/8dx/pbw==
 
 highlight.js@^10.0.0:
   version "10.5.0"

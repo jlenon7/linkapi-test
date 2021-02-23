@@ -28,8 +28,10 @@ Project developed in test for LinkApi
 - Boas práticas de desenvolvimento de API RESTful
 - Performance
 
-## TESTES
+## SELF IMPROVEMENTS
 
-- [ ] Criar testes para a collection do Bling
-- [ ] Criar testes para os endpoints de Pedidos
-- [ ] Criar testes para a collection do Pipedrive
+- [ ] Enfileirar as requisições das collections com RabbitMQ
+- [x] Adicionar Rate limiter
+- [x] Criar testes para a collection do Bling
+- [x] Criar testes para os endpoints de Orders
+- [x] Criar testes para a collection do Pipedrive

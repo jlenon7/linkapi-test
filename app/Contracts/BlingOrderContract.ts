@@ -1,3 +1,3 @@
 export interface BlingOrderContract {
-  id: string
+  idPedido: number
 }

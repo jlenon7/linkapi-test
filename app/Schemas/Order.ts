@@ -30,6 +30,18 @@ export class Order {
   })
   price: string
 
+  @Prop({
+    type: String,
+    require: true,
+  })
+  blingId: string
+
+  @Prop({
+    type: String,
+    require: true,
+  })
+  pipedriveId: string
+
   @Prop({ type: Number, required: true })
   quantity: number
 
@@ -43,7 +55,7 @@ export class Order {
   deletedAt?: Date
 
   @Prop({ type: String, default: 'pendent' })
-  status: 'pendent' | 'approved' | 'reproved'
+  status: 'pendent' | 'approved' | 'reproved' | string
 }
 
 export const OrderSchema = SchemaFactory.createForClass(Order)

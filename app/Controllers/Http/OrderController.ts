@@ -1,6 +1,3 @@
-import { Pagination } from 'app/Decorators/Pagination'
-import { OrderService } from 'app/Services/Api/OrderService'
-import { ResponseInterceptor } from './Interceptors/ResponseInterceptor'
 import {
   Controller,
   Get,
@@ -10,6 +7,9 @@ import {
   Post,
   UseInterceptors,
 } from '@nestjs/common'
+import { Pagination } from 'app/Decorators/Pagination'
+import { OrderService } from 'app/Services/Api/OrderService'
+import { ResponseInterceptor } from './Interceptors/ResponseInterceptor'
 import { PaginationContract } from '@secjs/core/build/Contracts/PaginationContract'
 
 @Controller('/orders')
@@ -19,10 +19,17 @@ export class OrderController {
 
   @Get()
   async list(
-    @Query() queries?: string[],
+    @Query() queries: any,
     @Pagination() pagination: PaginationContract,
   ) {
-    return this.orderService.list(pagination, dates, prices)
+    const formatedQueries = {
+      maxDate: queries.max_date,
+      sinceDate: queries.since_date,
+      maxPrice: queries.max_price,
+      sincePrice: queries.since_price,
+    }
+
+    return this.orderService.list(pagination, formatedQueries)
   }
 
   @Post()

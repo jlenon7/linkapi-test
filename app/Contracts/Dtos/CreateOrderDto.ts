@@ -1,4 +1,6 @@
 export class CreateOrderDto {
+  pipedriveId: number
+  blingId: number
   code: string
   date: Date
   seller: string

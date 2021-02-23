@@ -1,7 +1,7 @@
 import { ConfigService } from '@nestjs/config'
-import { HttpException, HttpService, Inject, Injectable } from '@nestjs/common'
 import { CreateOrderDto } from 'app/Contracts/Dtos/CreateOrderDto'
 import { BlingOrderContract } from 'app/Contracts/BlingOrderContract'
+import { HttpException, HttpService, Inject, Injectable } from '@nestjs/common'
 
 @Injectable()
 export class BlingCollection {
@@ -90,8 +90,9 @@ export class BlingCollection {
         .post(`${this.url}/pedido/json/?apikey=${this.token}&xml=${xml}`)
         .toPromise()
 
-      return response.data.retorno.pedidos
+      return response.data.retorno.pedidos[0].pedido
     } catch (error) {
+      console.log(error)
       error.response.data.isBlingError = true
       error.response.data.method = this.createOrder.name
 

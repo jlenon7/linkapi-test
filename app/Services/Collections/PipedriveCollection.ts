@@ -1,6 +1,6 @@
 import { ConfigService } from '@nestjs/config'
-import { HttpException, HttpService, Inject, Injectable } from '@nestjs/common'
 import { PipedriveDealContract } from 'app/Contracts/PipedriveDealContract'
+import { HttpException, HttpService, Inject, Injectable } from '@nestjs/common'
 
 @Injectable()
 export class PipedriveCollection {

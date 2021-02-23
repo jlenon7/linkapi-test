@@ -2,6 +2,7 @@ import app from 'config/app'
 import http from 'config/http'
 import cors from 'config/cors'
 import database from 'config/database'
+import ratelimit from 'config/ratelimit'
 
 import { ConfigModule } from '@nestjs/config'
 import { MongooseModule } from '@nestjs/mongoose'
@@ -12,6 +13,7 @@ const configuration = () => ({
   http,
   cors,
   database,
+  ratelimit,
 })
 
 const kernel = [
