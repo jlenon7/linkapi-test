@@ -36,6 +36,7 @@ const configurations = {
         'mongodb',
       )}?retryWrites=true&w=majority`,
       options: {
+        useCreateIndex: true,
         useNewUrlParser: true,
         useUnifiedTopology: true,
       },

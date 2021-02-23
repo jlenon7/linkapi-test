@@ -8,7 +8,7 @@ export class Order {
   @Prop({ type: String, required: true })
   code: string
 
-  @Prop({ type: Date, required: true })
+  @Prop({ type: Date, required: true, index: true })
   date: Date
 
   @Prop({ type: String, required: true })
@@ -23,7 +23,11 @@ export class Order {
   @Prop({ type: Number, required: true })
   discount: number
 
-  @Prop({ type: String, required: true })
+  @Prop({
+    type: String,
+    required: true,
+    index: true,
+  })
   price: string
 
   @Prop({ type: Number, required: true })
@@ -32,7 +36,7 @@ export class Order {
   @Prop({ type: String, required: true })
   description: string
 
-  @Prop({ type: String, required: true })
+  @Prop({ type: String, required: true, index: true })
   token: string
 
   @Prop({ type: Date, default: null })

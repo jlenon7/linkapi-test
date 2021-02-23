@@ -25,6 +25,7 @@ export const httpControllers = [
 
 export const collections = [
   require('../Services/Collections/BlingCollection').BlingCollection,
+  require('../Services/Collections/PipedriveCollection').PipedriveCollection,
 ]
 
 /*

@@ -8,22 +8,23 @@ export class WebhookController {
 
   @Post('/create')
   async create(@Body() body) {
-    console.log('Webhook', body.current)
-    if (body.current.status !== 'won') {
+    const data = body.current
+
+    if (data.status !== 'won') {
       return
     }
 
     const orderVo = new CreateOrderDto()
 
-    orderVo.code = body.current.id
-    orderVo.description = body.title
-    orderVo.date = body.current.update_time
-    orderVo.seller = body.current.owner_name
-    orderVo.price = body.current.weighted_value
-    orderVo.client.email = body.current.cc_email
-    orderVo.quantity = body.current.products_count
-    orderVo.client.name = body.current.org_name || body.current.person_name
+    orderVo.code = data.id
+    orderVo.description = data.title
+    orderVo.date = data.update_time
+    orderVo.seller = data.owner_name
+    orderVo.price = data.weighted_value
+    orderVo.client.email = data.cc_email
+    orderVo.quantity = data.products_count
+    orderVo.client.name = data.org_name || data.person_name
 
-    return this.orderService.create(orderVo)
+    return this.orderService.createOne(orderVo)
   }
 }

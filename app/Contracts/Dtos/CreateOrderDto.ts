@@ -3,8 +3,8 @@ export class CreateOrderDto {
   date: Date
   seller: string
   client: {
-    name: string
-    email: string
+    name?: string
+    email?: string
   }
 
   discount?: number

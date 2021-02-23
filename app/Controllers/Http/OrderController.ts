@@ -1,22 +1,41 @@
-import { Controller, Get, Post } from '@nestjs/common'
 import { Pagination } from 'app/Decorators/Pagination'
+import { OrderService } from 'app/Services/Api/OrderService'
+import { ResponseInterceptor } from './Interceptors/ResponseInterceptor'
+import {
+  Controller,
+  Get,
+  Query,
+  Inject,
+  Param,
+  Post,
+  UseInterceptors,
+} from '@nestjs/common'
 import { PaginationContract } from '@secjs/core/build/Contracts/PaginationContract'
 
 @Controller('/orders')
+@UseInterceptors(ResponseInterceptor)
 export class OrderController {
+  @Inject(OrderService) private orderService: OrderService
+
   @Get()
-  async list(@Pagination() pagination: PaginationContract) {
-    console.log(pagination)
-    // TODO List all opportunities
+  async list(
+    @Pagination() pagination: PaginationContract,
+    @Query('dates') dates?: any,
+    @Query('prices') prices?: any,
+  ) {
+    if (dates) dates = dates.split('TO')
+    if (prices) prices = prices.split('TO')
+
+    return this.orderService.list(pagination, dates, prices)
   }
 
   @Post()
   async create() {
-    // TODO Fetch deals with status won and register in Bling
+    return this.orderService.createMany()
   }
 
-  @Get('/id')
-  async show() {
-    // TODO Show Opportunities
+  @Get('/:id')
+  async show(@Param('id') id: string) {
+    return this.orderService.show(id)
   }
 }

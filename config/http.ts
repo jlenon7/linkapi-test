@@ -34,5 +34,9 @@ export default {
       url: Env('BLING_URL', ''),
       token: Env('BLING_TOKEN', ''),
     },
+    pipedrive: {
+      url: Env('PIPEDRIVE_URL', ''),
+      token: Env('PIPEDRIVE_TOKEN', ''),
+    },
   },
 }
