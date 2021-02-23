@@ -25,11 +25,13 @@ It is necessary to provide an `API` that integrates the `Pipedrive` and `Bling` 
 | POST      | api/v1/orders         | orders.store      |
 | GET       | api/v1/orders/:id     | orders.show       |
 
-Query Search em orders.index
+### Query Search em orders.index
 
-Listagem paginadas: `?offset=0&limit=10`
-Listagem entre preços: `?since_price=2000.00&max_price=4000.00`
-Listagem entre datas: `?since_date=2021-02-23T05:00:00.000Z&max_date=2021-02-24T06:00:00.000Z`
+#### Listagem paginadas: `?offset=0&limit=10`
+
+#### Listagem entre preços: `?since_price=2000.00&max_price=4000.00`
+
+#### Listagem entre datas: `?since_date=2021-02-23T05:00:00.000Z&max_date=2021-02-24T06:00:00.000Z`
 
 ## OBSERVAÇÃO
 
