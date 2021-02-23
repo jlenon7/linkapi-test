@@ -27,15 +27,15 @@ It is necessary to provide an `API` that integrates the `Pipedrive` and `Bling` 
 
 ### Query Search em orders.index
 
-#### Listagem paginadas: `?offset=0&limit=10`
+Listagem paginadas: `?offset=0&limit=10`
 
-#### Listagem entre preços: `?since_price=2000.00&max_price=4000.00`
+Listagem entre preços: `?since_price=2000.00&max_price=4000.00`
 
-#### Listagem entre datas: `?since_date=2021-02-23T05:00:00.000Z&max_date=2021-02-24T06:00:00.000Z`
+Listagem entre datas: `?since_date=2021-02-23T05:00:00.000Z&max_date=2021-02-24T06:00:00.000Z`
 
 ## OBSERVAÇÃO
 
-Essa API está rodando dentro de um servidor no Heroku apenas para ver o funcionamento do Webhook. [Clique aqui para acessar!](https://linkapi-test.herokuapp.com/api)
+Essa API está rodando dentro de um servidor no Heroku apenas para ver o funcionamento do `Webhook` e para ter um acesso mais simplificado ao `Swagger`. [Clique aqui para acessar!](https://linkapi-test.herokuapp.com/api/swagger)
 
 Não esqueça de criar o arquivo com as váriaveis de ambiente para rodar os testes ou modo development.
 
