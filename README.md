@@ -113,8 +113,11 @@ yarn start:dev
 ## SELF IMPROVEMENTS
 
 - [ ] Enfileirar as requisições das collections com RabbitMQ
+- [x] Pipeline CI
+- [x] Autenticação JWT
 - [x] Adicionar Rate limiter
+- [x] Criar testes end2end para os endpoints de Auth
+- [x] Criar testes end2end para os endpoints de Orders
+- [x] Criar testes unitários para a collection do Bling
+- [x] Criar testes unitários para a collection do Pipedrive
 - [x] Implementar Webhook para quando um Deal for atualizado no Pipedrive ajustar no Bling
-- [x] Criar testes para a collection do Bling
-- [x] Criar testes para os endpoints de Orders
-- [x] Criar testes para a collection do Pipedrive
