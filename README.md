@@ -13,7 +13,7 @@
   <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen?style=for-the-badge&logo=appveyor">
 </p>
 
-It is necessary to provide an `API` that integrates the `Pipedrive` and `Bling` services, in order to be able to place sales orders for suppliers within `Bling`
+Uma `API` que integre os serviços `Pipedrive` e `Bling`, a fim de poder realizar pedidos de vendas para fornecedores dentro do `Bling`.
 
 <img src="https://extrato.vtex.com/images/linkapi_avatar-linkapiX800.png" width="200px" align="right" hspace="30px" vspace="100px">
 
