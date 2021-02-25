@@ -41,9 +41,28 @@ Não esqueça de criar o arquivo com as váriaveis de ambiente para rodar os tes
 
 ## COMANDOS
 
+Instale as dependências
+
 ```bash
-cp .env.example .env.testing && yarn test
-cp .env.example .env && yarn start:dev
+yarn
+```
+
+Gere o arquivo .env
+
+```bash
+cp .env.example .env && cp .env.example .env.testing
+```
+
+Para rodar os testes E2E e Unitários
+
+```bash
+yarn test
+```
+
+Para rodar a aplicação em modo desenvolvimento
+
+```bash
+yarn start:dev
 ```
 
 ## OBJETIVO

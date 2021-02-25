@@ -1,0 +1,48 @@
+name: LinkApi CI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-18.04
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '14.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Instalar dependências
+        run: yarn
+
+      - name: Fazer build do projeto
+        run: yarn build
+
+      - name: Verificar o linting
+        run: yarn lint
+
+      - name: Rodar os testes
+        run: yarn test
+        env:
+          HOST: 127.0.0.1
+          PORT: 3333
+          NODE_ENV: testing
+          API_DEBUG: false
+          APP_NAME: LinkApi
+          APP_URL: http://${HOST}:${PORT}
+          APP_PREFIX: /api
+          APP_LOCALE: pt
+          BLING_URL: ${{ secrets.BLING_URL }}
+          BLING_TOKEN: ${{ secrets.BLING_TOKEN }}
+          PIPEDRIVE_URL: ${{ secrets.PIPEDRIVE_URL }}
+          PIPEDRIVE_TOKEN: ${{ secrets.PIPEDRIVE_TOKEN }}
+          DB_CONNECTION: ${{ secrets.DB_CONNECTION }}
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_USERNAME: ${{ secrets.DB_USERNAME }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_DATABASE: ${{ secrets.DB_DATABASE }}
