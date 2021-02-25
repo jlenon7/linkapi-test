@@ -54,7 +54,7 @@ JSON Example POST Register
 
 ## OBSERVAÇÃO
 
-Essa API está rodando dentro de um servidor no Heroku apenas para ver o funcionamento do `Webhook` e para ter um acesso mais simplificado ao `Swagger`. [Clique aqui para acessar!](https://linkapi-test.herokuapp.com/api/swagger)
+Essa API está rodando dentro de um servidor no Heroku apenas para ver o funcionamento do `Webhook` e para ter um acesso mais simplificado ao `Swagger`. [Clique aqui para acessar!](https://linkapi-test.herokuapp.com/api/swagger) PS: Aguarde o carregamento da página. Como está no plano free, o Heroku desliga a máquina automaticamente quando o servidor para de ser consumido, e só quando uma nova requisição chega que ele roda o servidor novamente, esse processo demora um pouco.
 
 Não esqueça de criar o arquivo com as váriaveis de ambiente para rodar os testes ou modo development.
 
