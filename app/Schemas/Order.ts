@@ -59,3 +59,12 @@ export class Order {
 }
 
 export const OrderSchema = SchemaFactory.createForClass(Order)
+
+OrderSchema.methods.toJSON = function() {
+  const obj = this.toObject() as any
+
+  delete obj._id
+  delete obj.__v
+
+  return obj
+}

@@ -31,6 +31,7 @@ describe('\n[E2E] Index Orders 🏘', () => {
     expect(body.path).toBe(path)
     expect(body.method).toBe(method)
     expect(body.status).toBe(status)
+    expect(body.data.data[0]._id).toBeFalsy()
     expect(body.data.data).toHaveLength(2)
     expect(body.data.pagination.offset).toBe(0)
     expect(body.data.pagination.limit).toBe(10)

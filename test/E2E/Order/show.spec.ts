@@ -17,7 +17,7 @@ describe('\n[E2E] Show Order 🏘', () => {
     const status = 200
     const method = 'GET'
     const code = 'RESPONSE'
-    const path = `/v1/orders/${order._id}`
+    const path = `/v1/orders/${order.token}`
 
     const { body } = await request(app.server.getHttpServer())
       .get(path)
@@ -27,34 +27,15 @@ describe('\n[E2E] Show Order 🏘', () => {
     expect(body.path).toBe(path)
     expect(body.method).toBe(method)
     expect(body.status).toBe(status)
-    expect(body.data._id).toBe(`${order._id}`)
-  })
-
-  it('should throw a not valid ObjectId error', async () => {
-    const status = 500
-    const method = 'GET'
-    const code = 'Error'
-    const path = '/v1/orders/null-id'
-
-    const { body } = await request(app.server.getHttpServer())
-      .get(path)
-      .expect(status)
-
-    expect(body.code).toBe(code)
-    expect(body.path).toBe(path)
-    expect(body.method).toBe(method)
-    expect(body.status).toBe(status)
-    expect(body.error).toEqual({
-      name: 'Error',
-      message: 'Internal Server Error',
-    })
+    expect(body.data._id).toBeFalsy()
+    expect(body.data.token).toBe(`${order.token}`)
   })
 
   it('should throw a not found error', async () => {
     const status = 404
     const method = 'GET'
     const code = 'Error'
-    const path = '/v1/orders/601d80cf50ee4620e3373371'
+    const path = '/v1/orders/ord-as12312sad'
 
     const { body } = await request(app.server.getHttpServer())
       .get(path)

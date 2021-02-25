@@ -93,8 +93,10 @@ export class OrderService {
     return this.orderRepository.storeOne(dto)
   }
 
-  async show(id: string) {
-    const order = await this.orderRepository.getOne(id)
+  async show(token: string) {
+    const order = await this.orderRepository.getOne(null, {
+      where: [{ key: 'token', value: token }],
+    })
 
     if (!order) {
       throw new NotFoundException('NOT_FOUND_ORDER')

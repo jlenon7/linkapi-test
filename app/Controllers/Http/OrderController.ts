@@ -45,8 +45,8 @@ export class OrderController {
     return this.orderService.createMany()
   }
 
-  @Get('/:id')
-  async show(@Param('id') id: string) {
-    return this.orderService.show(id)
+  @Get('/:token')
+  async show(@Param('token') token: string) {
+    return this.orderService.show(token)
   }
 }

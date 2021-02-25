@@ -23,7 +23,7 @@ Uma `API` que integre os serviços `Pipedrive` e `Bling`, a fim de poder realiza
 | --------- | --------------------- | ----------------- |
 | GET       | api/v1/orders         | orders.index      |
 | POST      | api/v1/orders         | orders.store      |
-| GET       | api/v1/orders/:id     | orders.show       |
+| GET       | api/v1/orders/:token  | orders.show       |
 
 ### Query Search em orders.index
 
