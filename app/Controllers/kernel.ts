@@ -9,6 +9,7 @@ import { RequestMethod } from '@nestjs/common'
 |
 */
 export const httpControllers = [
+  require('./Http/AuthController').AuthController,
   require('./Http/OrderController').OrderController,
   require('./Http/WebhookController').WebhookController,
   require('./Http/WelcomeController').WelcomeController,
@@ -67,7 +68,10 @@ export const filters = [
 |
 */
 
-export const guards = []
+export const guards = [
+  require('./Http/Guards/JwtGuard').JwtGuard,
+  require('./Http/Guards/JwtStrategy').JwtStrategy,
+]
 
 /*
 |--------------------------------------------------------------------------

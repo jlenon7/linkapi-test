@@ -1,1 +1,4 @@
-export default [require('./OrderRepository').OrderRepository]
+export default [
+  require('./UserRepository').UserRepository,
+  require('./OrderRepository').OrderRepository,
+]

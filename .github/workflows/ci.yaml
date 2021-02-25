@@ -37,6 +37,7 @@ jobs:
           APP_URL: http://${HOST}:${PORT}
           APP_PREFIX: /api
           APP_LOCALE: pt
+          APP_KEY: ${{ secrets.APP_KEY }}
           BLING_URL: ${{ secrets.BLING_URL }}
           BLING_TOKEN: ${{ secrets.BLING_TOKEN }}
           PIPEDRIVE_URL: ${{ secrets.PIPEDRIVE_URL }}

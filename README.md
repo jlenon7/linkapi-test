@@ -33,6 +33,25 @@ Listagem entre preços: `?since_price=2000.00&max_price=4000.00`
 
 Listagem entre datas: `?since_date=2021-02-23T05:00:00.000Z&max_date=2021-02-24T06:00:00.000Z`
 
+---
+
+| METHOD    | URI                  | NAME            |
+| --------- | -------------------- | ----------------|
+| GET       | /api/v1/auth/me      | auth.me         |
+| POST      | /api/v1/auth/login   | auth.login      |
+| POST      | /api/v1/auth/register| auth.register   |
+
+JSON Example POST Register
+
+```json
+{
+  "name": "João Lenon",
+  "email": "lenonSec7@gmail.com",
+  "password": "12345678",
+  "password_confirmation": "12345678",
+}
+```
+
 ## OBSERVAÇÃO
 
 Essa API está rodando dentro de um servidor no Heroku apenas para ver o funcionamento do `Webhook` e para ter um acesso mais simplificado ao `Swagger`. [Clique aqui para acessar!](https://linkapi-test.herokuapp.com/api/swagger)

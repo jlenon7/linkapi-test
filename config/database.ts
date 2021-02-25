@@ -1,8 +1,12 @@
 import Env from '@secjs/env'
 
 import { Order, OrderSchema } from 'app/Schemas/Order'
+import { User, UserSchema } from 'app/Schemas/User'
 
-const schemasPath = [{ name: Order.name, schema: OrderSchema }]
+const schemasPath = [
+  { name: User.name, schema: UserSchema },
+  { name: Order.name, schema: OrderSchema },
+]
 
 const configurations = {
   /*

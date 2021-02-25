@@ -6,14 +6,19 @@ import {
   Param,
   Post,
   UseInterceptors,
+  UseGuards,
 } from '@nestjs/common'
-import { ApiTags, ApiQuery } from '@nestjs/swagger'
+
+import { JwtGuard } from './Guards/JwtGuard'
 import { Pagination } from 'app/Decorators/Pagination'
 import { OrderService } from 'app/Services/Api/OrderService'
+import { ApiTags, ApiQuery, ApiBearerAuth } from '@nestjs/swagger'
 import { ResponseInterceptor } from './Interceptors/ResponseInterceptor'
 import { PaginationContract } from '@secjs/core/build/Contracts/PaginationContract'
 
+@ApiBearerAuth()
 @ApiTags('Orders')
+@UseGuards(JwtGuard)
 @Controller('/v1/orders')
 @UseInterceptors(ResponseInterceptor)
 export class OrderController {
