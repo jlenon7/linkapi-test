@@ -1,20 +1,13 @@
 import * as bcrypt from 'bcrypt'
-import {
-  HttpException,
-  Inject,
-  Injectable,
-  UnauthorizedException,
-} from '@nestjs/common'
 
 import { JwtService } from '@nestjs/jwt'
 import { UserService } from './UserService'
-import { UserRepository } from 'app/Repositories/UserRepository'
+import { Inject, Injectable, UnauthorizedException } from '@nestjs/common'
 
 @Injectable()
 export class AuthService {
   @Inject(JwtService) private jwtService: JwtService
   @Inject(UserService) private userService: UserService
-  @Inject(UserRepository) private userRepository: UserRepository
 
   async validateUser(email: string, pass: string): Promise<any> {
     const user = await this.userService.findOneByEmail(email)
@@ -44,14 +37,7 @@ export class AuthService {
 
   async register(data) {
     data.email.toLowerCase().trim()
-
-    const user = await this.userRepository.getOne(null, {
-      where: [{ key: 'email', value: data.email }],
-    })
-
-    if (user) {
-      throw new HttpException('EMAIL_ALREADY_TAKEN', 422)
-    }
+    data.password = await bcrypt.hash(data.password, 10)
 
     return this.userService.create(data)
   }

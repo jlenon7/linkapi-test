@@ -1,20 +1,45 @@
-import * as bcrypt from 'bcrypt'
+import {
+  HttpException,
+  Inject,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common'
+
 import { Token } from '@secjs/core/build/Utils/Classes/Token'
 import { ApiRequestContract } from '@secjs/core/build/Contracts'
 import { UserRepository } from 'app/Repositories/UserRepository'
-import { Inject, Injectable, NotFoundException } from '@nestjs/common'
 
 @Injectable()
 export class UserService {
   @Inject(UserRepository) private userRepository: UserRepository
 
-  async create({ name, email, password }) {
-    return this.userRepository.storeOne({
-      name,
-      email,
-      token: new Token().generate('usr'),
-      password: await bcrypt.hash(password, 10),
+  private async validateEmail(email: string) {
+    const user = await this.userRepository.getOne(null, {
+      where: [{ key: 'email', value: email }],
     })
+
+    if (user) {
+      throw new HttpException('EMAIL_ALREADY_TAKEN', 422)
+    }
+  }
+
+  private async validateToken(token: string) {
+    const user = await this.userRepository.getOne(null, {
+      where: [{ key: 'token', value: token }],
+    })
+
+    if (user) {
+      throw new HttpException('TOKEN_ALREADY_TAKEN', 422)
+    }
+  }
+
+  async create(dto) {
+    dto.token = new Token().generate('usr')
+
+    await this.validateEmail(dto.email)
+    await this.validateToken(dto.token)
+
+    return this.userRepository.storeOne(dto)
   }
 
   async findOneByEmail(email: string) {

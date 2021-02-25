@@ -7,7 +7,12 @@ import { Token } from '@secjs/core/build/Utils/Classes/Token'
 import { BlingCollection } from '../Collections/BlingCollection'
 import { CreateOrderDto } from 'app/Contracts/Dtos/CreateOrderDto'
 import { OrderRepository } from 'app/Repositories/OrderRepository'
-import { Inject, Injectable, NotFoundException } from '@nestjs/common'
+import {
+  HttpException,
+  Inject,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common'
 import { PipedriveCollection } from '../Collections/PipedriveCollection'
 
 @Injectable()
@@ -20,6 +25,34 @@ export class OrderService {
 
   @Inject(PipedriveCollection)
   private pipedriveCollection: PipedriveCollection
+
+  private async validateCode(code: string) {
+    const order = await this.orderRepository.getOne(null, {
+      where: [{ key: 'code', value: code }],
+    })
+
+    if (order) {
+      throw new HttpException('CODE_ALREADY_TAKEN', 422)
+    }
+  }
+
+  private async validateToken(token: string) {
+    const order = await this.orderRepository.getOne(null, {
+      where: [{ key: 'token', value: token }],
+    })
+
+    if (order) {
+      throw new HttpException('TOKEN_ALREADY_TAKEN', 422)
+    }
+  }
+
+  private async validatePipedriveId(pipedriveId: number) {
+    const order = await this.orderRepository.getOne(null, {
+      where: [{ key: 'pipedriveId', value: pipedriveId }],
+    })
+
+    if (order) return true
+  }
 
   async createMany() {
     const deals = await this.pipedriveCollection.getDeals('won')
@@ -77,17 +110,15 @@ export class OrderService {
   }
 
   async createOne(dto: CreateOrderDto): Promise<any> {
-    const alreadyCreated = await this.orderRepository.getOne(null, {
-      where: [{ key: 'pipedriveId', value: dto.pipedriveId }],
-    })
+    dto.token = new Token().generate('ord')
 
-    if (alreadyCreated) {
-      return
-    }
+    await this.validateCode(dto.code)
+    await this.validateToken(dto.token)
+
+    if (await this.validatePipedriveId(dto.pipedriveId)) return
 
     const blingOrder = await this.blingCollection.createOrder(dto)
 
-    dto.token = new Token().generate('ord')
     dto.blingId = blingOrder.idPedido
 
     return this.orderRepository.storeOne(dto)

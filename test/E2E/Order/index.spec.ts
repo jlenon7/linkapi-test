@@ -18,10 +18,12 @@ describe('\n[E2E] Index Orders 🏘', () => {
 
     await orderRepository.storeOne({
       ...payload,
+      code: new Token().generate(),
       token: new Token().generate('ord'),
     })
     await orderRepository.storeOne({
       ...payload,
+      code: new Token().generate(),
       token: new Token().generate('ord'),
     })
 
@@ -49,12 +51,14 @@ describe('\n[E2E] Index Orders 🏘', () => {
 
     await orderRepository.storeOne({
       ...payload,
+      code: new Token().generate(),
       date: new Date('2021-02-23T05:00:00.000Z'),
       price: '2500',
       token: new Token().generate('ord'),
     })
     await orderRepository.storeOne({
       ...payload,
+      code: new Token().generate(),
       date: new Date('2021-02-23T05:00:00.000Z'),
       price: '3000',
       token: new Token().generate('ord'),
@@ -64,6 +68,7 @@ describe('\n[E2E] Index Orders 🏘', () => {
     await orderRepository.storeOne({
       ...payload,
       price: '6000',
+      code: new Token().generate(),
       token: new Token().generate('ord'),
     })
 
